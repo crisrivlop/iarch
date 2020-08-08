@@ -24,5 +24,5 @@ compile:
 
 run:
 	/opt/android-ndk-r20/ndk-build
-	adb push ia /data/local/tmp
-	adb shell /data/local/tmp/ia
+	adb push ../libs/armeabi-v7a/ia_test /data/local/tmp
+	adb shell /data/local/tmp/ia_test

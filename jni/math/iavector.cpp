@@ -1,7 +1,7 @@
 #include "iavector.h"
 #include "matrix.h"
 
-#include <iostream>
+// #include <iostream>
 #include <exception>
 #include <cmath>
 
@@ -133,7 +133,7 @@ ostream& Vector::print(ostream& os, Vector const & v){
     for (i = 0; i < v._size-1; i++){
         os << v._data[i] << ", ";
     } 
-    os << v._data[i] << "]\n";
+    os << v._data[i] << "]";
     return os;
 }
 
@@ -183,4 +183,30 @@ Vector Vector::absolute(){
         v._data[i] = abs(this->_data[i]);
     }
     return v;
+}
+
+
+
+Vector Vector::append(const double& e){
+    Vector v{this->_size+1};
+    int i = 0;
+    for (; i < this->_size; i++){
+        v._data[i] = this->_data[i];
+    }
+    v._data[i] = e;
+    return v;
+}
+
+void Vector::appendInPlace(const double& e){
+    unsigned int size = this->_size + 1;
+    double *data = new double[size];
+
+    int i = 0;
+    for (; i < this->_size; i++){
+        data[i] = this->_data[i];
+    }
+    data[i] = e;
+    delete [] this->_data;
+    this->_data = data;
+    this->_size = size;
 }

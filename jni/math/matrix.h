@@ -32,7 +32,7 @@ class Matrix {
         Matrix operator*(const double& b){return this->mul(b);};
         Matrix operator/(const Matrix& b){return this->div(b);};
         Matrix operator<<(const Matrix& b){return this->div(b);};
-        friend ostream& operator<<(ostream& os, Matrix const & v){return v.print(os,v);};
+        friend ostream& operator<<(ostream& os, Matrix const & m){return m.print(os,m);};
 
         
         Matrix dotm(const Matrix& b);

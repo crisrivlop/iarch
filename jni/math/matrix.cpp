@@ -19,8 +19,13 @@ Matrix::Matrix(const Matrix& m){
     this->_rows = m._rows;
     this->_cols = m._cols;
     this->_data = new double*[m._rows]();
-    for (int i = 0; i < m._rows; ++i)
+    for (int i = 0; i < m._rows; ++i){
         this->_data[i] = new double[m._cols];
+        for(int j = 0; j < m._rows; ++j)
+            this->_data[i][j] = m._data[i][j];
+    }
+        
+            
 
 }
 
@@ -93,5 +98,23 @@ void Matrix::print(){
         std::cout << std::endl;
     }
 
+}
+
+
+ostream& Matrix::print(ostream& os, Matrix const & v){
+
+    os << std::endl << "[";
+    for (int i = 0; i < v._rows; i++){
+        if(i != 0)os << " ";
+        for (int j = 0; j < v._cols; j++){
+            os << v._data[i][j];
+            if(j+1 != v._cols)os << ",\t";
+        }
+
+        if(i+1 == v._rows)os << "]";
+        
+        os << std::endl;
+    }
+    return os;
 }
 

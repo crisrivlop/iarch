@@ -37,6 +37,12 @@ class Vector {
         Vector operator*(const double& b){return this->mul(b);};
         Vector operator/(const Vector& b){return this->div(b);};
         Vector operator/(const double& b){return this->div(b);};
+        bool operator==(const Vector& b){
+            bool r = true; 
+            for (int i = 0; i < this->_size; i++ ) 
+                r &= b._data[i] == this->_data[i];
+            return r;
+        };
         friend ostream& operator<<(ostream& os, Vector const & v){return v.print(os,v);};
 
         double dot(const Vector& b);
@@ -47,6 +53,10 @@ class Vector {
         Vector absolute();
         
         Matrix extern_product(const Vector& b);
+
+        Vector append(const double& e);
+
+        void appendInPlace(const double& e);
 
         unsigned int len() const;
 
