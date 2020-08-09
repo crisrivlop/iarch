@@ -10,7 +10,7 @@ void copylayer(Layer l){
     std::cout << "Layer" << std::endl;
 }
 
-void NeuralNetwork::addLayer(unsigned int outputSize,ACTIVATION_TYPE activationType,double learningRate){
+void NeuralNetwork::addLayer(unsigned int outputSize,ACTIVATION_TYPE activationType,float learningRate){
     unsigned lastsize = 0;
     if (layers.size() != 0 ){
         lastsize =layers.back().size();
@@ -21,7 +21,7 @@ void NeuralNetwork::addLayer(unsigned int outputSize,ACTIVATION_TYPE activationT
     layers.push_back(layer);
 }
 
-void NeuralNetwork::addLayer(Matrix w,ACTIVATION_TYPE activationType,double learningRate){
+void NeuralNetwork::addLayer(Matrix w,ACTIVATION_TYPE activationType,float learningRate){
     Layer layer{w};
     layer.setActivationFunction(activationType);
     layer.setLearningRate(learningRate);
@@ -33,7 +33,7 @@ void NeuralNetwork::addLayer(Matrix w,ACTIVATION_TYPE activationType,double lear
 void NeuralNetwork::setEpochs(unsigned int eps){
     epochs = eps;
 }
-void NeuralNetwork::setThreshold(double th){
+void NeuralNetwork::setThreshold(float th){
     threshold = th;
 }
 void NeuralNetwork::train(Vector input,Vector output){
@@ -47,14 +47,14 @@ void NeuralNetwork::train(Vector input,Vector output){
         current = input;
         current = ia(current);
 
-         double total_error = (((current-output)*(current-output))/output.len()).dot(ones);        
+         float total_error = (((current-output)*(current-output))/output.len()).dot(ones);        
         
         if (total_error <= this->threshold && -this->threshold <= total_error){
             break;
         }
 
         //error calculation here
-        Vector error = ((current-output)*2.0)/((double)output.len());
+        Vector error = ((current-output)*2.0)/((float)output.len());
 
         for (int i = layers.size()-1; i >=0 ; i--){
             error = layers.at(i).backward(error);

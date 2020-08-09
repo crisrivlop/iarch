@@ -53,7 +53,7 @@ Vector Layer::backward(Vector e){
     return h.subset(0,h.len()-2);
 }
 
-void Layer::setLearningRate(double lr){
+void Layer::setLearningRate(float lr){
     this->alpha = lr;
 }
 

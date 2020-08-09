@@ -6,22 +6,23 @@ Matrix::Matrix(unsigned int rows, unsigned int cols){
 
     this->_rows = rows;
     this->_cols = cols;
-    this->_data = new double*[rows]();
+    this->_data = new float*[rows]();
     for (int i = 0; i < rows; ++i)
-        this->_data[i] = new double[cols];
+        this->_data[i] = new float[cols];
 }
 
 
 
 Matrix::Matrix() : _rows(0),_cols(0),_data(0){
+    this->_data = 0;
 }
 
 Matrix::Matrix(const Matrix& m){
     this->_rows = m._rows;
     this->_cols = m._cols;
-    this->_data = new double*[m._rows]();
+    this->_data = new float*[m._rows]();
     for (int i = 0; i < m._rows; i++){
-        this->_data[i] = new double[m._cols];
+        this->_data[i] = new float[m._cols];
         for(int j = 0; j < m._cols; j++)
             this->_data[i][j] = m._data[i][j];
     }
@@ -31,9 +32,9 @@ Matrix::Matrix(const Matrix& m){
 void Matrix::clone(const Matrix& m){
     this->_rows = m._rows;
     this->_cols = m._cols;
-    this->_data = new double*[m._rows]();
+    this->_data = new float*[m._rows]();
     for (int i = 0; i < m._rows; i++){
-        this->_data[i] = new double[m._cols];
+        this->_data[i] = new float[m._cols];
         for(int j = 0; j < m._cols; j++)
             this->_data[i][j] = m._data[i][j];
     }
@@ -67,17 +68,8 @@ Matrix Matrix::sub(const Matrix& b){
     return m;
 }
 
-Matrix Matrix::mul(const Matrix& b){
-    Matrix m{this->_rows,this->_cols};
 
-    for (int i = 0; i < this->_rows; i++)
-        for (int j = 0; j < this->_cols; j++)
-            m._data[i][j] = this->_data[i][j] * b._data[i][j];
-    return m;
-}
-
-
-Matrix Matrix::mul(const double b){
+Matrix Matrix::mul(const float b){
     Matrix m{this->_rows,this->_cols};
     for (int i = 0; i < this->_rows; i++)
         for (int j = 0; j < this->_cols; j++)
@@ -98,15 +90,6 @@ Vector Matrix::dot(const Vector& b){
     return v;
 }
 
-void Matrix::print(){
-    for (int i = 0; i < this->_rows; i++){
-        for (int j = 0; j < this->_cols; j++){
-            std::cout << this->_data[i][j] << "\t";
-        }
-        std::cout << std::endl;
-    }
-
-}
 
 
 ostream& Matrix::print(ostream& os, Matrix const & v){

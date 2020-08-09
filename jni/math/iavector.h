@@ -8,38 +8,38 @@ using namespace std;
 class Matrix;
 
 class Vector {
-        double * _data;
+        float * _data;
         unsigned int _size;
         Vector add(const Vector& b);
-        Vector add(const double& b);
+        Vector add(const float& b);
         void  addi(const Vector& b);
         Vector sub(const Vector& b);
-        Vector sub(const double& b);
+        Vector sub(const float& b);
         Vector mul(const Vector& b);
-        Vector mul(const double& b);
+        Vector mul(const float& b);
         Vector div(const Vector& b);
-        Vector div(const double& b);
+        Vector div(const float& b);
         static ostream& print(ostream& os, Vector const & v);
         void clone(const Vector& b);
 
     public:
         Vector(unsigned int size);
-        Vector(unsigned int size,const double * input);
+        Vector(unsigned int size,const float * input);
         Vector(const Vector &v);
         Vector();
         
-        double& operator[](unsigned int i) {return this->_data[i];};
+        float& operator[](unsigned int i) {return this->_data[i];};
         Vector subset(unsigned int i, unsigned int f);
         Vector operator+(const Vector& b){return this->add(b);};
-        Vector operator+(const double& b){return this->add(b);};
+        Vector operator+(const float& b){return this->add(b);};
         void   operator=(const Vector& b){this->clone(b);};
         void   operator+=(const Vector& b){this->addi(b);};
         Vector operator-(const Vector& b){return this->sub(b);};
-        Vector operator-(const double& b){return this->sub(b);};
+        Vector operator-(const float& b){return this->sub(b);};
         Vector operator*(const Vector& b){return this->mul(b);};
-        Vector operator*(const double& b){return this->mul(b);};
+        Vector operator*(const float& b){return this->mul(b);};
         Vector operator/(const Vector& b){return this->div(b);};
-        Vector operator/(const double& b){return this->div(b);};
+        Vector operator/(const float& b){return this->div(b);};
         bool operator==(const Vector& b){
             bool r = true; 
             for (int i = 0; i < this->_size; i++ ) 
@@ -48,20 +48,20 @@ class Vector {
         };
         friend ostream& operator<<(ostream& os, Vector const & v){return v.print(os,v);};
 
-        double dot(const Vector& b);
+        float dot(const Vector& b);
 
         Vector inv();
         Vector exponential();
 
         Vector absolute();
 
-        double maximum();
+        float maximum();
         
         Matrix extern_product(const Vector& b);
 
-        Vector append(const double& e);
+        Vector append(const float& e);
 
-        void appendInPlace(const double& e);
+        void appendInPlace(const float& e);
 
         unsigned int len() const;
 

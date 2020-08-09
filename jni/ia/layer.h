@@ -12,7 +12,7 @@ class Layer{
         Matrix w; //weight vector
         Vector o; //output vector
         Vector i; //input vector
-        double alpha; //learning rate
+        float alpha; //learning rate
         unsigned int _size;
         ACTIVATION_TYPE activation_type;
         void clone(const Layer& b);
@@ -21,7 +21,7 @@ class Layer{
         Layer(Matrix w);
         Layer(const Layer &l);
         void setActivationFunction(ACTIVATION_TYPE activationType);
-        void setLearningRate(double lr);
+        void setLearningRate(float lr);
         Matrix weight();
         Vector forward(Vector v);
         Vector backward(Vector v);
