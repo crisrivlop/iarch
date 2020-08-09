@@ -5,6 +5,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := ia_test
 
 LOCAL_SRC_FILES := ./main.cpp math/iavector.cpp math/matrix.cpp test/vector_test.cpp test/matrix_test.cpp
+LOCAL_SRC_FILES += ia/NeuralNetwork.cpp ia/layer.cpp ia/sigmoid.cpp ia/activation.cpp ia/relu.cpp
 
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
     LOCAL_ARM_NEON := true

@@ -12,6 +12,15 @@ Vector::Vector(unsigned int size){
     this->_data = new double[size];
 };
 
+Vector::Vector(unsigned int size,const double * input){
+    this->_size = size;
+    this->_data = new double[size];
+    for (int i = 0; i < this->_size; i++){
+        this->_data[i] = input[i];
+    }
+}
+
+
 Vector::Vector() : _size(0),_data(0){
 };
 
@@ -154,6 +163,15 @@ Vector::Vector(const Vector &v){
     }
 }
 
+void Vector::clone(const Vector& v){
+    this->_size = v._size;
+    this->_data = new double[v._size];
+    for (int i = 0; i < this->_size; i++){
+        this->_data[i] = v._data[i];
+    }
+}
+
+
 
 Matrix Vector::extern_product(const Vector& b){
     Matrix m{b._size,this->_size};
@@ -209,4 +227,33 @@ void Vector::appendInPlace(const double& e){
     delete [] this->_data;
     this->_data = data;
     this->_size = size;
+}
+
+
+Vector Vector::relu(){
+    Vector v{this->_size};
+    for (int i = 0; i < this->_size; i++){
+        v._data[i] = max(this->_data[i],0.0);
+    }
+    return v;
+}
+
+
+Vector Vector::relu_derivated(){
+    Vector v{this->_size};
+    double m;
+    for (int i = 0; i < this->_size; i++){
+        m = max(this->_data[i],0.0);
+        v._data[i] = m/(m==0.0?1.0:m);
+    }
+    return v;
+}
+
+
+double Vector::maximum(){
+    double m = this->_data[0];
+    for (int i = 0; i < this->_size; i++){
+        m = max(this->_data[i],m);   
+    }
+    return m;
 }

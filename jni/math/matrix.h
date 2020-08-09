@@ -14,9 +14,10 @@ class Matrix {
         Matrix add(const Matrix& b);
         Matrix sub(const Matrix& b);
         Matrix mul(const Matrix& b);
-        Matrix mul(const double& b);
+        Matrix mul(double b);
         Matrix div(const Matrix& b);
         static ostream& print(ostream& os, Matrix const & v);
+        void clone(const Matrix& b);
 
     public:
         Matrix(unsigned int rows, unsigned int cols);
@@ -29,14 +30,20 @@ class Matrix {
         Matrix operator+(const Matrix& b){return this->add(b);};
         Matrix operator-(const Matrix& b){return this->sub(b);};
         Matrix operator*(const Matrix& b){return this->mul(b);};
-        Matrix operator*(const double& b){return this->mul(b);};
+        Matrix operator*(double b){return this->mul(b);};
         Matrix operator/(const Matrix& b){return this->div(b);};
         Matrix operator<<(const Matrix& b){return this->div(b);};
+        void   operator=(const Matrix& b){this->clone(b);};
         friend ostream& operator<<(ostream& os, Matrix const & m){return m.print(os,m);};
 
         
         Matrix dotm(const Matrix& b);
         Vector dot(const Vector& b);
+
+        unsigned int cols() const;
+        unsigned int rows() const;
+
+        Matrix transpose();
 
         void print();
 

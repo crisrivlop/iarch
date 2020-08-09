@@ -8,14 +8,17 @@
 
 
 class Layer{
-        Activation * activation;
+        Activation * activation = 0;
         Matrix w; //weight vector
         Vector o; //output vector
         Vector i; //input vector
         double alpha; //learning rate
         unsigned int _size;
+        ACTIVATION_TYPE activation_type;
+        void clone(const Layer& b);
     public:
         Layer(unsigned int inputSize,unsigned int outputSize);
+        Layer(Matrix w);
         Layer(const Layer &l);
         void setActivationFunction(ACTIVATION_TYPE activationType);
         void setLearningRate(double lr);
@@ -23,6 +26,7 @@ class Layer{
         Vector forward(Vector v);
         Vector backward(Vector v);
         unsigned int size();
+        void operator=(const Layer& b){this->clone(b);};
         ~Layer();
 };
 

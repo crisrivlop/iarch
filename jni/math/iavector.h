@@ -20,9 +20,11 @@ class Vector {
         Vector div(const Vector& b);
         Vector div(const double& b);
         static ostream& print(ostream& os, Vector const & v);
+        void clone(const Vector& b);
 
     public:
         Vector(unsigned int size);
+        Vector(unsigned int size,const double * input);
         Vector(const Vector &v);
         Vector();
         
@@ -30,6 +32,7 @@ class Vector {
         Vector subset(unsigned int i, unsigned int f);
         Vector operator+(const Vector& b){return this->add(b);};
         Vector operator+(const double& b){return this->add(b);};
+        void   operator=(const Vector& b){this->clone(b);};
         void   operator+=(const Vector& b){this->addi(b);};
         Vector operator-(const Vector& b){return this->sub(b);};
         Vector operator-(const double& b){return this->sub(b);};
@@ -51,6 +54,8 @@ class Vector {
         Vector exponential();
 
         Vector absolute();
+
+        double maximum();
         
         Matrix extern_product(const Vector& b);
 
@@ -59,6 +64,10 @@ class Vector {
         void appendInPlace(const double& e);
 
         unsigned int len() const;
+
+
+        Vector relu();
+        Vector relu_derivated();
 
         ~Vector();
 };
