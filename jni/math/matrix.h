@@ -9,7 +9,7 @@ using namespace std;
 
 class Matrix {
         friend Vector;
-        float ** _data;
+        float ** _data = 0;
         unsigned int _rows;
         unsigned int _cols;
         Matrix add(const Matrix& b);

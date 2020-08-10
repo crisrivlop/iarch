@@ -9,7 +9,9 @@ LOCAL_SRC_FILES += ia/NeuralNetwork.cpp ia/layer.cpp ia/sigmoid.cpp ia/activatio
 
 ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
     LOCAL_ARM_NEON := true
-    LOCAL_CFLAGS :=  -O3 -DHAVE_NEON=1 -fopenmp -I./ 
+    LOCAL_CFLAGS :=  -fopenmp -I./ 
+    # LOCAL_CFLAGS += -O3
+    LOCAL_CFLAGS += -DHAVE_NEON=1 -DANDROID_ARM_NEON=ON
 endif
 
 

@@ -11,7 +11,10 @@ Layer::Layer(Matrix w): i(w.cols()),o(w.rows()), w(w)
 }
 
 Layer::Layer(unsigned int inputSize,unsigned int outputSize) 
-    : w{outputSize, inputSize},i{inputSize},o{outputSize}, alpha{0.5},_size(outputSize){
+    : alpha{0.5},_size(outputSize){
+    w = Matrix{outputSize,inputSize};
+    i = Vector{inputSize};
+    o = Vector{outputSize};
     this->activation = new Sigmoid();
     activation_type = SIGMOID;
 }
@@ -41,6 +44,7 @@ void   Layer::setActivationFunction(ACTIVATION_TYPE activationType){
 
 Vector Layer::forward(Vector v){
     i = v;
+    // activation->activate(w.transpose().dot(v.append(1.0)));
     o = activation->activate(w.transpose().dot(v.append(1.0)));
     return o;
 }

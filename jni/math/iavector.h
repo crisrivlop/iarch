@@ -7,8 +7,11 @@ using namespace std;
 
 class Matrix;
 
+float dotHelper( float *a, float *b, unsigned int len);
+
 class Vector {
-        float * _data;
+        friend Matrix;
+        float * _data = 0;
         unsigned int _size;
         Vector add(const Vector& b);
         Vector add(const float& b);

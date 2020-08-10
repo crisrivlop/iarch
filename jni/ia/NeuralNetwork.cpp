@@ -6,12 +6,8 @@ NeuralNetwork::NeuralNetwork(unsigned int inputSize, unsigned int outputSize)
     layers = {};
 }
 
-void copylayer(Layer l){
-    std::cout << "Layer" << std::endl;
-}
-
 void NeuralNetwork::addLayer(unsigned int outputSize,ACTIVATION_TYPE activationType,float learningRate){
-    unsigned lastsize = 0;
+    unsigned lastsize = inputSize;
     if (layers.size() != 0 ){
         lastsize =layers.back().size();
     }
