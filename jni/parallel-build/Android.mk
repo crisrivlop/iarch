@@ -13,7 +13,7 @@ ifeq ($(TARGET_ARCH_ABI),armeabi-v7a)
     LOCAL_ARM_NEON := true
     LOCAL_CFLAGS :=  -fopenmp -I./ 
     LOCAL_CFLAGS += -O3
-    LOCAL_CFLAGS += -DHAVE_NEON=1 -DANDROID_ARM_NEON=ON
+    LOCAL_CFLAGS += -DANDROID_ARM_NEON=ON -DHAVE_NEON=1
 endif
 
 

@@ -23,7 +23,7 @@ int main(int argc, char** argv){
     std::cout << "============================================================\n";
 
     std::cout << "starting 'train_test' test ..." << std::endl;
-    train_test(500,200, 0.0001f, 10);
+    train_test(200,100, 0.0001f, 10);
     std::cout << "============================================================\n";
 
     std::cout << "starting 'forward_test' test ..." << std::endl;

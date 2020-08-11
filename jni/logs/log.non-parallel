@@ -1,50 +1,38 @@
-total time: 0.0201669 value: 3.36984e+20
-total time: 0.018635 value: 3.36984e+20
-total time: 0.018522 value: 3.36984e+20
-total time: 0.0185599 value: 3.36984e+20
-total time: 0.018579 value: 3.36984e+20
-total time: 0.0184779 value: 3.36984e+20
-total time: 0.018539 value: 3.36984e+20
-total time: 0.018605 value: 3.36984e+20
-total time: 0.0185852 value: 3.36984e+20
-total time: 0.0185649 value: 3.36984e+20
-total time: 0.0185869 value: 3.36984e+20
-total time: 0.0185611 value: 3.36984e+20
-total time: 0.0186009 value: 3.36984e+20
-total time: 0.0185559 value: 3.36984e+20
-total time: 0.018584 value: 3.36984e+20
-total time: 0.0185721 value: 3.36984e+20
-total time: 0.0186088 value: 3.36984e+20
-total time: 0.0185449 value: 3.36984e+20
-total time: 0.0185699 value: 3.36984e+20
-total time: 0.0185819 value: 3.36984e+20
-total time: 0.018575 value: 3.36984e+20
-total time: 0.018554 value: 3.36984e+20
-total time: 0.0185721 value: 3.36984e+20
-total time: 0.0185521 value: 3.36984e+20
-total time: 0.0185041 value: 3.36984e+20
-total time: 0.018492 value: 3.36984e+20
-total time: 0.0185702 value: 3.36984e+20
-total time: 0.018611 value: 3.36984e+20
-total time: 0.0185621 value: 3.36984e+20
-total time: 0.018575 value: 3.36984e+20
-
-#non-parallel
-Thread x partial sum = 192368724808340340736.000000
-Thread x partial sum = 5211601003018715136.000000
-Thread x partial sum = 99049038795270782976.000000
-Thread x partial sum = 36422818005893775360.000000
-
-
-192368724808340340736.000000 + 5211601003018715136.000000 + 99049038795270782976.000000 + 36422818005893775360.000000
-
-192730156270622867456.000000 + 5207920937600548864.000000 + 98961183418164969472.000000 + 36454800600122523648.000000
-
-
-#parallel
-Thread x partial sum = 192730156270622867456.000000
-Thread x partial sum =   5207920937600548864.000000
-Thread x partial sum =  98961183418164969472.000000
-Thread x partial sum =  36454800600122523648.000000
-
-
+TESTING IA APLICATION PARALLELIZED USING NEON INTRINSICS
+============================================================
+starting 'train_test' test ...
+(0) Vector size is: 500 - Training time: 23.3881
+(1) Vector size is: 500 - Training time: 26.3122
+(2) Vector size is: 500 - Training time: 26.118
+(3) Vector size is: 500 - Training time: 25.6333
+(4) Vector size is: 500 - Training time: 25.9911
+(5) Vector size is: 500 - Training time: 25.692
+(6) Vector size is: 500 - Training time: 25.3916
+(7) Vector size is: 500 - Training time: 23.6632
+(8) Vector size is: 500 - Training time: 23.4407
+(9) Vector size is: 500 - Training time: 26.8712
+============================================================
+starting 'forward_test' test ...
+ Vector size is: 500, Calculation time: 1.34317 #layer100
+============================================================
+starting 'stress_layer_count_test' test ...
+ Vector size is: 1000, Calculation time: 0.576102 #layer9
+ Vector size is: 1000, Calculation time: 0.628207 #layer10
+ Vector size is: 1000, Calculation time: 1.13938 #layer11
+ Vector size is: 1000, Calculation time: 1.21089 #layer12
+ Vector size is: 1000, Calculation time: 1.19752 #layer13
+============================================================
+starting 'stress_layer_len_test' test ...
+ Vector size is: 10, Calculation time: 0.00126791 #layer10
+ Vector size is: 100, Calculation time: 0.012723 #layer10
+ Vector size is: 1000, Calculation time: 0.96992 #layer10
+ Vector size is: 2000, Calculation time: 2.32483 #layer10
+ Vector size is: 5000, Calculation time: 29.0651 #layer10
+============================================================
+starting 'stress_layer_len_and_layer_count_test' test ...
+ Vector size is: 10, Calculation time: 0.0130351 #layer10
+ Vector size is: 100, Calculation time: 0.0165932 #layer11
+ Vector size is: 1000, Calculation time: 1.00451 #layer12
+ Vector size is: 2000, Calculation time: 3.58501 #layer13
+ Vector size is: 5000, Calculation time: 49.5144 #layer14
+============================================================

@@ -1,68 +1,38 @@
-NP
-
-total time: 18.3941 average time is: 0.0183941
-total time: 22.3992 average time is: 0.0223992
-total time: 24.498 average time is: 0.024498
-total time: 22.9094 average time is: 0.0229094
-total time: 24.3051 average time is: 0.0243051
-total time: 24.6654 average time is: 0.0246654
-total time: 23.2956 average time is: 0.0232956
-total time: 22.95 average time is: 0.02295
-total time: 23.8058 average time is: 0.0238058
-total time: 19.3808 average time is: 0.0193808
-total time: 25.5942 average time is: 0.0255942
-total time: 22.5622 average time is: 0.0225622
-total time: 20.346 average time is: 0.020346
-total time: 27.7167 average time is: 0.0277167
-total time: 23.7146 average time is: 0.0237146
-total time: 20.4858 average time is: 0.0204858
-total time: 20.6587 average time is: 0.0206587
-total time: 21.9732 average time is: 0.0219732
-total time: 21.3631 average time is: 0.0213631
-total time: 23.3852 average time is: 0.0233852
-total time: 24.8286 average time is: 0.0248286
-total time: 23.8046 average time is: 0.0238046
-total time: 22.8265 average time is: 0.0228265
-total time: 17.9669 average time is: 0.0179669
-total time: 28.4498 average time is: 0.0284498
-total time: 27.966 average time is: 0.027966
-total time: 26.1778 average time is: 0.0261778
-total time: 23.221 average time is: 0.023221
-total time: 22.2503 average time is: 0.0222503
-total time: 20.4959 average time is: 0.0204959
-
-P
-
-total time: 9.77205 average time is: 0.00977205
-total time: 9.9979 average time is: 0.0099979
-total time: 14.5438 average time is: 0.0145438
-total time: 11.5819 average time is: 0.0115819
-total time: 11.8864 average time is: 0.0118864
-total time: 12.967 average time is: 0.012967
-total time: 12.5379 average time is: 0.0125379
-total time: 15.2147 average time is: 0.0152147
-total time: 13.6263 average time is: 0.0136263
-total time: 16.2765 average time is: 0.0162765
-total time: 12.7255 average time is: 0.0127255
-total time: 11.2048 average time is: 0.0112048
-total time: 13.6756 average time is: 0.0136756
-total time: 14.8478 average time is: 0.0148478
-total time: 14.1203 average time is: 0.0141203
-total time: 12.848 average time is: 0.012848
-total time: 14.5322 average time is: 0.0145322
-total time: 14.0951 average time is: 0.0140951
-total time: 12.1494 average time is: 0.0121494
-total time: 14.8571 average time is: 0.0148571
-total time: 11.4844 average time is: 0.0114844
-total time: 13.2156 average time is: 0.0132156
-total time: 13.4253 average time is: 0.0134253
-total time: 14.1229 average time is: 0.0141229
-total time: 13.5744 average time is: 0.0135744
-total time: 15.5617 average time is: 0.0155617
-total time: 13.4363 average time is: 0.0134363
-total time: 11.1317 average time is: 0.0111317
-total time: 13.3888 average time is: 0.0133888
-total time: 15.6327 average time is: 0.0156327
-
-
-
+TESTING IA APLICATION PARALLELIZED USING NEON INTRINSICS
+============================================================
+starting 'train_test' test ...
+(0) Vector size is: 500 - Training time: 14.4719
+(1) Vector size is: 500 - Training time: 14.7668
+(2) Vector size is: 500 - Training time: 13.6642
+(3) Vector size is: 500 - Training time: 14.625
+(4) Vector size is: 500 - Training time: 13.283
+(5) Vector size is: 500 - Training time: 17.979
+(6) Vector size is: 500 - Training time: 12.5658
+(7) Vector size is: 500 - Training time: 17.3673
+(8) Vector size is: 500 - Training time: 17.7787
+(9) Vector size is: 500 - Training time: 16.5188
+============================================================
+starting 'forward_test' test ...
+ Vector size is: 500, Calculation time: 0.78371 #layer100
+============================================================
+starting 'stress_layer_count_test' test ...
+ Vector size is: 1000, Calculation time: 0.232145 #layer9
+ Vector size is: 1000, Calculation time: 0.210647 #layer10
+ Vector size is: 1000, Calculation time: 0.234149 #layer11
+ Vector size is: 1000, Calculation time: 0.281196 #layer12
+ Vector size is: 1000, Calculation time: 0.395255 #layer13
+============================================================
+starting 'stress_layer_len_test' test ...
+ Vector size is: 10, Calculation time: 0.00176811 #layer10
+ Vector size is: 100, Calculation time: 0.017658 #layer10
+ Vector size is: 1000, Calculation time: 0.520062 #layer10
+ Vector size is: 2000, Calculation time: 0.919788 #layer10
+ Vector size is: 5000, Calculation time: 6.02742 #layer10
+============================================================
+starting 'stress_layer_len_and_layer_count_test' test ...
+ Vector size is: 10, Calculation time: 0.012954 #layer10
+ Vector size is: 100, Calculation time: 0.02665 #layer11
+ Vector size is: 1000, Calculation time: 0.424044 #layer12
+ Vector size is: 2000, Calculation time: 1.24375 #layer13
+ Vector size is: 5000, Calculation time: 7.32226 #layer14
+============================================================

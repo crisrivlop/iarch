@@ -7,16 +7,12 @@
 void train_test(unsigned int size,int epochs, float th, int testingIterations){
     NeuralNetwork nn{size,size};
 
-
-    std::cout << "setting up Neural Network..." << std::endl;
     
     nn.addLayer(size,SIGMOID,0.5);
     nn.addLayer(size,SIGMOID,0.5);
     nn.addLayer(size,SIGMOID,0.5);
     nn.setEpochs(epochs);
     nn.setThreshold(th);
-
-    std::cout << "action complete!" << std::endl;
 
     Vector  trainIn{size};
     Vector trainOut{size};
@@ -24,30 +20,23 @@ void train_test(unsigned int size,int epochs, float th, int testingIterations){
 
 
     double start_time, run_time;
-    std::cout << "Training time!" << std::endl;
     for (int j = 0 ; j < testingIterations; j++){
         run_time = 0;
         start_time = omp_get_wtime();
         nn.train(trainIn,trainOut);
         run_time += omp_get_wtime() - start_time;
-        std::cout << "(" << j << ")" << " - Training time: " << run_time << endl;
-
+        std::cout << "(" << j << ")" << " Vector size is: " << size<< " - Training time: " << run_time  << endl;
     }
-    std::cout << "Training has ended!" << std::endl;
 
 }
 
 void forward_test(unsigned int  size,int epochs, float th, int layerNumber){
     NeuralNetwork nn{size,size};
-
-    std::cout << "setting up Neural Network..." << std::endl;
     
     for (int i = 0 ; i < layerNumber; i++)
         nn.addLayer(size,SIGMOID,0.5);
     nn.setEpochs(epochs);
     nn.setThreshold(th);
-
-    std::cout << "action complete!" << std::endl;
 
     Vector  trainIn{size};
     Vector trainOut{size};
@@ -59,36 +48,35 @@ void forward_test(unsigned int  size,int epochs, float th, int layerNumber){
     start_time = omp_get_wtime();
     nn.ia(trainIn);
     run_time += omp_get_wtime() - start_time;
-    std::cout << " Vector size is: " << size << ", Calculation time: " << run_time << endl;
-
+    std::cout << " Vector size is: " << size << ", Calculation time: " << run_time << " #layer" << layerNumber << endl;
 
 }
 
 void stress_layer_count_test(){
-    forward_test(1000, 100, 0.0001f, 4);
-    forward_test(1000, 100, 0.0001f, 5);
-    forward_test(1000, 100, 0.0001f, 6);
-    forward_test(1000, 100, 0.0001f, 7);
-    forward_test(1000, 100, 0.0001f, 8);
+    forward_test(1000, 100, 0.0001f, 5+4);
+    forward_test(1000, 100, 0.0001f, 5+5);
+    forward_test(1000, 100, 0.0001f, 5+6);
+    forward_test(1000, 100, 0.0001f, 5+7);
+    forward_test(1000, 100, 0.0001f, 5+8);
 }
 
 //stressing forward by layer len
 void stress_layer_len_test(){
-    forward_test(   10, 100, 0.0001f, 4);
-    forward_test(  100, 100, 0.0001f, 4);
-    forward_test( 1000, 100, 0.0001f, 4);
-    forward_test( 5000, 100, 0.0001f, 4);
-    forward_test(10000, 100, 0.0001f, 4);
+    forward_test(   10, 100, 0.0001f, 10);
+    forward_test(  100, 100, 0.0001f, 10);
+    forward_test( 1000, 100, 0.0001f, 10);
+    forward_test( 2000, 100, 0.0001f, 10);
+    forward_test( 5000, 100, 0.0001f, 10);
 }
 
 
 
 void stress_layer_len_and_layer_count_test(){
-    forward_test(   10, 100, 0.0001f, 4);
-    forward_test(  100, 100, 0.0001f, 5);
-    forward_test( 1000, 100, 0.0001f, 6);
-    forward_test( 5000, 100, 0.0001f, 7);
-    forward_test(10000, 100, 0.0001f, 8);
+    forward_test(   10, 100, 0.0001f, 6+4);
+    forward_test(  100, 100, 0.0001f, 6+5);
+    forward_test( 1000, 100, 0.0001f, 6+6);
+    forward_test( 2000, 100, 0.0001f, 6+7);
+    forward_test( 5000, 100, 0.0001f, 6+8);
 }
 
 
