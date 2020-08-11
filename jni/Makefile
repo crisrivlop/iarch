@@ -5,9 +5,28 @@ matrix.o:
 iavector.o:
 	g++ -c math/iavector.cpp
 
-main.o: iavector.o matrix.o
+NeuralNetwork.o:
+	g++ -c ia/NeuralNetwork.cpp 
+
+layer.o: 
+	g++ -c ia/layer.cpp 
+sigmoid.o: 
+	g++ -c ia/sigmoid.cpp 
+
+activation.o: 
+	g++ -c ia/activation.cpp 
+relu.o:
+	g++ -c ia/relu.cpp
+
+
+vector_test.o:
+	g++ -c test/vector_test.cpp 
+matrix_test.o:	
+	g++ -c test/matrix_test.cpp
+
+main.o: iavector.o matrix.o NeuralNetwork.o layer.o sigmoid.o activation.o relu.o vector_test.o matrix_test.o
 	g++ -c main.cpp
-	g++ main.o iavector.o matrix.o -o ia-test
+	g++ -fopenmp main.o iavector.o matrix.o NeuralNetwork.o layer.o sigmoid.o activation.o relu.o vector_test.o matrix_test.o -o ia-test 
 
 
 all:

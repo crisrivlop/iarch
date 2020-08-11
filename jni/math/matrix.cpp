@@ -27,6 +27,8 @@ Matrix::Matrix() : _rows(0),_cols(0),_data(0){
 }
 
 Matrix::Matrix(const Matrix& m){
+    this->_data = 0;
+    this->_rows = 0;
     this->clone(m);
 
 }
